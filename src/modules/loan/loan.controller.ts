@@ -31,9 +31,8 @@ export default class LoanController {
 
   getLoanApplication = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
     try {
-      // const { id: customer_id } = req.user as User;
+      const { id: customer_id } = req.user as User;
       const { id } = req.params;
-      const customer_id = "1111";
       const loanApplication = await this.loanService.getLoanApplicaation(id, customer_id);
       return res.status(200).json({
         success: true,

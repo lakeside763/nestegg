@@ -51,9 +51,16 @@ export default class LoanService {
     }
 
     if (loanApplication.customer_id !== customer_id) {
-      throw new ForbiddenException("Not allowed")
+      throw new ForbiddenException("Not allowed customer ID")
     }
 
-    return loanApplication;
+    return {
+      ...loanApplication.dataValues, 
+      amount: amountInPounds(loanApplication.amount),
+      monthly_repayment: amountInPounds(loanApplication.monthly_repayment),
+      annual_interest_rate: Number(ANNUAL_INTEREST_RATE.toFixed(2)),
+      monthly_interest_rate: Number(loanApplication.monthly_interest_rate),
+      monthly_interest: amountInPounds(loanApplication.monthly_interest),
+    };
   }
 }
