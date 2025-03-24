@@ -15,6 +15,19 @@ The solution was built using the following
 - Sequelize
 - PostgreSQL
 
+### Architecture - Modular Monolithic
+- src/
+  - config
+  - lib
+  - middlewares
+  - migrations
+  - models
+  - modules
+  - routes
+  - types
+  - index.ts - the application entry point
+  - server.ts
+
 ### Installation, Deployment, Testing
 Easily run on docker
 - Clone the repo
