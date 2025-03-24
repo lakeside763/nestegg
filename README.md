@@ -66,7 +66,7 @@ git clone https://github.com/lakeside763/nestegg.git
 ```
 
 2. http://localhost:5500/v1/auth/login - POST
-- request 
+- request data
 
 ```
 {
@@ -92,7 +92,8 @@ git clone https://github.com/lakeside763/nestegg.git
 ```
 
 3. http://localhost:5500/v1/loan/applications - POST
-request data
+
+- request data
 
 ```
 {
@@ -100,7 +101,7 @@ request data
     "term_months": 36
 }
 ```
-response data
+- response data
 
 ```
 {
@@ -123,7 +124,8 @@ response data
 ```
 
 4. http://localhost:5500/v1/loan/applications/004ba9ae-9dce-4071-9184-2f4a7aa8908c - GET
-response data
+
+- response data
 
 ```
 {
