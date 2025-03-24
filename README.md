@@ -37,9 +37,10 @@ git clone https://github.com/lakeside763/nestegg.git
 
 ### API documentation
 - Get Global Price Index
-```
+
 1. http://localhost:5500/v1/customers/signup - POST
-request data
+- request data
+
 ```
 {
     "first_name": "Lakeside",
@@ -48,7 +49,9 @@ request data
     "password": "password"
 }
 ```
-response data
+
+- response data
+
 ```
 {
     "success": true,
@@ -61,15 +64,18 @@ response data
     }
 }
 ```
+
 2. http://localhost:5500/v1/auth/login - POST
-request data
+- request 
+
 ```
 {
     "email": "james@yahoo.com",
     "password": "password"
 }
 ```
-response data
+- response data
+
 ```
 {
     "success": true,
@@ -84,8 +90,10 @@ response data
     }
 }
 ```
+
 3. http://localhost:5500/v1/loan/applications - POST
 request data
+
 ```
 {
     "amount": 5000,
@@ -93,6 +101,7 @@ request data
 }
 ```
 response data
+
 ```
 {
     "success": true,
@@ -112,8 +121,10 @@ response data
     }
 }
 ```
+
 4. http://localhost:5500/v1/loan/applications/004ba9ae-9dce-4071-9184-2f4a7aa8908c - GET
 response data
+
 ```
 {
     "success": true,
