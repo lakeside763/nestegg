@@ -28,6 +28,14 @@ The solution was built using the following
   - index.ts - the application entry point
   - server.ts
 
+### CI/CD - Github Action & AWS Deployment
+- github
+  - deployment
+    - ecs-fargate.yml
+    - ecs-task-definition.json
+  - workflows
+    deploy.yml
+
 ### Installation, Deployment, Testing
 Easily run on docker
 - Clone the repo
