@@ -1,0 +1,58 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Resources:
+  ECSCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: nestegg-cluster
+
+  TaskExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: ecsTaskExecutionRole
+      AssumeRolePolicyDocument:
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - ecs-tasks.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
+
+  NesteggService:
+    Type: AWS::ECS::Service
+    Properties:
+      Cluster: !Ref ECSCluster
+      ServiceName: nestegg-service
+      LaunchType: FARGATE
+      TaskDefinition: !Ref TaskDefinition
+      DesiredCount: 1
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          Subnets:
+            - subnet-xxxxxxxx  # Replace with actual subnet IDs
+            - subnet-yyyyyyyy
+          SecurityGroups:
+            - sg-zzzzzzzz      # Replace with actual security group ID
+          AssignPublicIp: ENABLED
+
+  TaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: nestegg-task
+      ExecutionRoleArn: !GetAtt TaskExecutionRole.Arn
+      RequiresCompatibilities:
+        - FARGATE
+      Cpu: "256"
+      Memory: "512"
+      NetworkMode: awsvpc
+      ContainerDefinitions:
+        - Name: nestegg-app
+          Image: 123456789012.dkr.ecr.us-east-1.amazonaws.com/nestegg:latest
+          Cpu: 256
+          Memory: 512
+          Essential: true
+          PortMappings:
+            - ContainerPort: 3000
+              HostPort: 3000

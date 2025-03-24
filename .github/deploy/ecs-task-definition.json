@@ -1,0 +1,23 @@
+{
+  "family": "nestegg-task",
+  "containerDefinitions": [
+    {
+      "name": "nestegg-app",
+      "image": "123456789012.dkr.ecr.us-east-1.amazonaws.com/nestegg:latest",
+      "memory": 512,
+      "cpu": 256,
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 3000,
+          "hostPort": 3000
+        }
+      ]
+    }
+  ],
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::123456789012:role/ecsTaskExecutionRole"
+}
