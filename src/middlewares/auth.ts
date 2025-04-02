@@ -4,7 +4,6 @@ import { BadRequestException, NotFoundException, UnauthorizedException } from '.
 import jwt from 'jsonwebtoken';
 import User from '../models/user';
 
-
 export interface AuthenticatedRequest extends Request {
   user?: User;
 }

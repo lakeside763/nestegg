@@ -5,7 +5,8 @@ import { Sequelize, DataTypes, Model } from 'sequelize';
 import process from 'process';
 import * as dotenv from 'dotenv';
 
-dotenv.config({ path: path.resolve(process.cwd(), '.env') });
+const envFile = process.env.NODE_ENV === 'test' ? '.env.local' : '.env';
+dotenv.config({ path: path.resolve(process.cwd(), envFile) });
 
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
